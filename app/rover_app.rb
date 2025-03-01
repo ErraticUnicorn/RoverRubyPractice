@@ -1,3 +1,5 @@
+require_relative "rover"
+require_relative "cardinality"
 
 # Scenario:
 
@@ -14,11 +16,18 @@
 #     The program should output the final position and direction of the rover.
 
 
-def hello_world()
-    return "Hello World"
-end
-
+rover = Rover.new(0, 0, Cardinality::NORTH)
 loop do
-    puts "Hello World"
+    puts "Greetings, your rover is currently at #{rover.x}, #{rover.y} facing #{rover.cardinal_direction}"
+    puts "Valid commands are L, R, M"
     command = gets.chomp.upcase
+    if command == "L"
+        rover = RoverTransformer.rotate_left(rover)
+    elsif command == "R"
+        rover = RoverTransformer.rotate_right(rover)
+    elsif command == "M"
+        rover = RoverTransformer.move(rover)
+    else
+        puts "Invalid command"
+    end
 end

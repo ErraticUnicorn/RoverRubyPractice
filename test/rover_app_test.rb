@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require_relative "../rover_app"
+require_relative "../app/rover_app"
 
 class RoverAppTest < Minitest::Test
     def test_hello_world
